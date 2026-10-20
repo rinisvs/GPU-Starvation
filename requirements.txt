@@ -1,0 +1,29 @@
+# Core measurement + analysis. Must install cleanly everywhere.
+#
+# IMPORTANT -- torch: on Windows the default PyPI wheel is CPU-ONLY. It imports
+# fine and reports no CUDA device, which is a silent failure. bootstrap.ps1
+# installs torch from a CUDA index BEFORE this file so the requirement is
+# already satisfied here. If installing manually:
+#
+#   pip install torch --index-url https://download.pytorch.org/whl/cu128
+#
+# (match your driver's CUDA version from `nvidia-smi`; RTX 50-series needs
+# cu128 or newer for sm_120 kernels). Verify with scripts/doctor.py, which
+# checks both the build tag and the compiled arch list.
+torch>=2.6
+transformers>=4.45
+safetensors>=0.4.5
+accelerate>=0.34
+
+# Telemetry
+nvidia-ml-py>=12.560
+psutil>=6.0
+
+# Analysis and figures
+pandas>=2.2
+numpy>=1.26
+scipy>=1.14
+matplotlib>=3.9
+
+# Config
+pyyaml>=6.0

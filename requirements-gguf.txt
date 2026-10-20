@@ -1,0 +1,11 @@
+# Optional: GGUF support via llama.cpp.
+#
+# Kept separate because this builds a C++ extension. Without a prebuilt wheel
+# for your Python/CUDA combination it needs CMake and a C++ toolchain, and a
+# failure here should not abort the whole bootstrap -- the pickle vs
+# safetensors comparison still works without it.
+#
+# Prebuilt CUDA wheels:
+#   pip install llama-cpp-python \
+#     --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu124
+llama-cpp-python>=0.3.0

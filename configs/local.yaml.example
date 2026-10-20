@@ -1,0 +1,16 @@
+# Copy to configs/local.yaml to override paths on this machine.
+# local.yaml is gitignored, so personal paths never reach a commit.
+#
+# Shallow-merged over whichever config you pass to --config.
+# Paths also support ${ENV_VAR} expansion, so you can instead set
+# GPUSTARVE_MODELS and leave the committed config alone.
+
+formats:
+  - name: pickle
+    path: 'E:\Softwares\LLM_Models\Qwen-Pickle-HF'
+    extension: ".bin"
+  - name: safetensors
+    path: 'E:\Softwares\LLM_Models\Qwen-SafeTensors'
+    extension: ".safetensors"
+  - name: gguf
+    path: 'E:\Softwares\LLM_Models\Qwen-GGUF\qwen2.5-1.5b-q4_k_m.gguf'

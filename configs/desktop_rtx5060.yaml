@@ -1,0 +1,37 @@
+# Desktop reference platform: RTX 5060 (Blackwell sm_120), 8 GB GDDR7.
+#
+# Model weights live OUTSIDE the repo. They are several GB, they are not source,
+# and they are already on this machine. Absolute paths are correct here -- do not
+# copy weights into the repository.
+#
+# Sizes are measured from disk at run time. There is deliberately no size field.
+
+label: "RTX 5060 / Core Ultra 9 / PCIe Gen4 x4 NVMe"
+
+formats:
+  - name: pickle
+    path: 'E:\Softwares\LLM_Models\Qwen-Pickle-HF'
+    extension: ".bin"
+  - name: safetensors
+    path: 'E:\Softwares\LLM_Models\Qwen-SafeTensors'
+    extension: ".safetensors"
+  - name: gguf
+    # NOTE: the old codebase had this path typo'd as "E\Softwares\..." (missing
+    # colon) in both benchmark_energy.py and benchmark_unified.py. Verify the
+    # real filename on disk before the first run.
+    path: 'E:\Softwares\LLM_Models\Qwen-GGUF\qwen2.5-1.5b-q4_k_m.gguf'
+
+runs: 10
+warmup: 1        # discarded loads before measurement starts
+prompt: "The future of edge computing is"
+max_new_tokens: 1
+
+sample_power: true
+power_interval_s: 0.1
+overhead_arm: true      # run each config sampled AND unsampled
+cooldown_s: 3.0
+
+reference_precision_bytes_per_param: 2
+param_count: 1543714304  # Qwen2.5-1.5B
+
+device: "cuda"
